@@ -1,0 +1,58 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block head %}
+    <title>DDatacupboard</title>
+{% endblock head %}
+
+{% block body %}
+<header class="container row mx-auto mt-4">
+        <div class="col-12 col-md-6 px-0">
+            <h1 class="display-3 fw-semibold text-center text-md-start  mb-4">Get Dataset to Train Your AI model</h1>
+        </div>
+        <div class="col-12 col-md-6 mb-4">
+            <video class="d-block mx-auto mx-md-0 rounded-3" width="90%" controls>
+                <source src="{% static "video/5-programming-concept.mp4" %}" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <hr>
+    </header>
+
+    <main class="container mx-auto mb-4">
+        <div class="d-flex justify-content-between">
+            <h2 class="text-center">Data collection</h2>
+            <form class="d-flex inline-group form-inline my-2 my-lg-0" action="/">
+                <input class="form-control mr-sm-2 rounded-end-0" {% if search_query %}value="{{ search_query }}"{% endif %} type="search" name='q' placeholder="Search" aria-label="Search">
+                <button class="btn btn-dark rounded-start-0 my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        <hr>
+        <br>
+
+        {% if search_query %}
+            <p class="lead">{{ datasets|length }} search result found for <span class="fw-semibold h3">{{search_query}}</span> </p>
+        {% endif %}
+        <div class="row justify-content-around gap-y-4" >
+            {% for data in datasets  %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;">
+                <img class="w-100 object-fit-cover rounded-3"
+                    src="{{data.preview_image.url}}"
+                    alt="" height="220px">
+                <div class="d-flex justify-content-between mt-2">
+                    <p>{{data.title}}</p>
+                    <a download href="{{data.data_file.url}}" class="border-0 bg-transparent h-fit-content text-dark" style="height: fit-content;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class=""
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+{% endblock body %}
