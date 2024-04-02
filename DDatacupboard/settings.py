@@ -122,9 +122,9 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # django ssl security settings
-SECURE_HSTS_SECONDS = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
+# SECURE_HSTS_SECONDS = True
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
