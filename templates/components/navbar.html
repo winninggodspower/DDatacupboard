@@ -1,7 +1,10 @@
 {% load static %}
 <nav class="navbar navbar-expand-md bg-body-tertiary" aria-label="Thirteenth navbar example">
     <div class="container ">
-        <a class="navbar-brand" href="/">Datacupboard</a>
+        <a class="navbar-brand" href="/">
+            <img src="{% static "site-logo.jpg" %}" alt="Bootstrap" width="50" >
+            Datacupboard
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
             aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,3 +28,15 @@
         </div>
     </div>
 </nav>
+
+<style>
+    a.navbar-brand img{
+        transform: rotate(10deg);
+        transition: all 200ms ease-out;
+    }
+
+    a.navbar-brand img:hover{
+        scale: 1.1;
+        transform: rotate(-20deg);
+    }
+</style>
