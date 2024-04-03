@@ -3,10 +3,10 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()  # take environment variables from .env.
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / '.env')  # take environment variables from .env.
 
 
 # Quick-start development settings - unsuitable for production
@@ -18,12 +18,13 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.getenv('DEBUG') == 'True' else False
 
-ALLOWED_HOSTS = ['www.datacupboard.info', 'datacupboard.info', '127.0.0.1']
+ALLOWED_HOSTS = ['www.datacupboard.info', 'datacupboard.info', '127.0.0.1', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -32,6 +33,24 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'main',
 ]
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Datacupboard",
+
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Datacupboard",
+
+    # Welcome text on the login screen
+    "welcome_sign": "Welcome to DataCupboard",
+
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        'main.Data': 'fas fa-solid fa-database',
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -121,9 +140,11 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT')
 
 # django ssl security settings
-SECURE_HSTS_SECONDS = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
+if not DEBUG:
+    print('we are not in debug mode')
+    SECURE_HSTS_SECONDS = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
