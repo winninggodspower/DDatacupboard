@@ -6,15 +6,34 @@
 {% endblock head %}
 
 {% block body %}
-<div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="DDatacupboard logo" width="72" height="57">
-    <h1 class="display-5 fw-bold text-body-emphasis">What is DDatacupboard?</h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Looking to give your AI projects a boost? You're in the right place! At DDatacupboard, we've curated a diverse collection of datasets just for you. Say goodbye to the hassle of searching for data – with us, it's as easy as a few clicks. <br> <br>
-        Whether you're a seasoned researcher or just starting out in the world of AI, our platform offers something for everyone. Dive in now and fuel your innovation with our easy-to-access datasets!</p>
+<div class="px-4 py-5 my-5">
+    <img id="site-logo" class="d-block mx-auto mb-4" src="{% static 'site-logo.jpg' %}" alt="DDatacupboard logo" width="80" >
+    <h1 class="display-5 fw-bold text-body-emphasis text-center">About DDatacupboard</h1>
+    <div class="col-lg-7 mx-auto">
+            <p class="lead mb-4" style="text-align: justify">Welcome to Datacupboard, your trusted platform for seamless data access and download. We believe that data should be readily available to those who need it, without the hassle of complex processes or barriers to access. That's why we've built a platform that simplifies the entire data discovery and download experience.
+                <br><br>
+                At Datacupboard, we understand the importance of efficient data access in today's fast-paced world. Whether you're a researcher delving into market trends, a scientist conducting scientific research, or a developer working on machine learning algorithms, we're here to provide you with reliable and diverse datasets to support your endeavors.
+                <br><br>
+                What sets Datacupboard apart is our unwavering commitment to simplicity and accessibility. Our intuitive search and filter features allow you to quickly find the datasets you need, while our seamless download options ensure hassle-free access to the information you seek.
+                <br><br>
+                But we don't stop there. Datacupboard is continually evolving to meet the ever-changing demands of the data landscape. We actively seek feedback from our users to enhance our platform and introduce new features that make managing and accessing data even more efficient.
+                <br><br>
+                Join the Datacupboard community today and experience the difference. Whether you're a seasoned data professional or just starting your journey with data, we're here to support you every step of the way. Welcome to Datacupboard - your one-stop-shop for easy data access!!</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="/" type="button" class="btn btn-dark btn-lg px-4 gap-3">View dataset</a>
         </div>
     </div>
 </div>
+
+<style>
+    #site-logo{
+        transform: rotate(5deg);
+        transition: all 200ms ease-out;
+    }
+
+    #site-logo:hover{
+        scale: 1.1;
+        transform: rotate(-8deg);
+    }
+</style>
 {% endblock body %}

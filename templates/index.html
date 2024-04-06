@@ -2,13 +2,15 @@
 {% load static %}
 
 {% block head %}
-<title>Datacupboard</title>
+    <title>Datacupboard</title>
 {% endblock head %}
 
 {% block body %}
 <header class="container row mx-auto mt-4">
     <div class="col-12 col-md-6 px-0">
-        <h1 class="display-3 fw-semibold text-center text-md-start  mb-4">Get Dataset to Train Your AI model</h1>
+        <h1 class="display-5 fw-bold text-capitalize text-center text-md-start  mb-4">
+            your one-stop-shop for easy data access, as simple as opening a cupboard!
+        </h1>
     </div>
     <div class="col-12 col-md-6 mb-4">
         <video class="d-block mx-auto mx-md-0 rounded-3" width="90%" controls>
@@ -36,7 +38,7 @@
     <p class="lead">{{ datasets|length }} search result found for <span class="fw-semibold h3">{{search_query}}</span>
     </p>
     {% endif %}
-    <div class="row justify-content-around gap-4">
+    <div class="row justify-content-center justify-content-md-between gap-4">
         {% for data in datasets %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;">
             <img class="w-100 object-fit-cover rounded-3" src="{{data.preview_image.url}}" alt="" height="220px">
@@ -55,7 +57,7 @@
                 <div class="collapse" id="description-{{data.id}}">
                     {{data.description}}
                 </div>
-                <a href="#description-{{data.id}}" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                <a class="description-toggle" href="#description-{{data.id}}" data-bs-toggle="collapse" role="button" aria-expanded="false"
                     aria-controls="description-{{data.id}}">description..</a>
             </div>
         </div>
@@ -64,7 +66,7 @@
     </main>
 
     <script>
-        document.querySelectorAll('[data-bs-toggle]').forEach((link)=>{
+        document.querySelectorAll('.description-toggle').forEach((link)=>{
             link.addEventListener('click', ()=>{
                 if (link.classList.contains('collapsed')) {
                     link.innerHTML = 'description..'
