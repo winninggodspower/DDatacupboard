@@ -150,3 +150,11 @@ if not DEBUG:
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Email settings
+EMAIL_HOST = 'mail.datacupboard.info'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PWD')
+EMAIL_HOST_USER = 'site@datacupboard.info'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

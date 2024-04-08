@@ -1,0 +1,99 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Datacupboard Feedback</title>
+{% endblock head %}
+
+{% block body %}
+<div class="row container px-4 py-5 my-5 mx-auto">
+    <form class="col-lg-7" action="{% url "feedback" %}" method="post">
+        {% csrf_token %}
+        <legend>Leave Us A Feedback</legend>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="name" maxlength="50" aria-describedby="nameHelp" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" maxlength="254" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="service_rating" class="form-label">
+                How would you rate our service?</label>
+            <div class="d-flex gap-3">
+                <div>
+                    <input type="radio" name="service_rating" value="1" id="rating-1" class="visually-hidden" required>
+                    <label class="service-rating border bg-light py-2 px-3 rounded rounded-md" for="rating-1"> 1 </label>
+                </div>
+                <div>
+                    <input type="radio" name="service_rating" value="2" id="rating-2" class="visually-hidden">
+                    <label class="service-rating border bg-light py-2 px-3 rounded rounded-md" for="rating-2" >2</label>
+                </div>
+                <div>
+                    <input type="radio" name="service_rating" value="3" id="rating-3" class="visually-hidden">
+                    <label class="service-rating border bg-light py-2 px-3 rounded rounded-md" for="rating-3" >3</label>
+                </div>
+                <div>
+                    <input type="radio" name="service_rating" value="4" id="rating-4" class="visually-hidden">
+                    <label class="service-rating border bg-light py-2 px-3 rounded rounded-md" for="rating-4" >4</label>
+                </div>
+                <div>
+                    <input type="radio" name="service_rating" value="5" id="rating-5" class="visually-hidden">
+                    <label class="service-rating border bg-light py-2 px-3 rounded rounded-md" for="rating-5" >5</label>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">
+                Would you recommend datacupboard to others?
+            </label>
+           <div>
+            <label class="d-block" for="yes-recommendation">
+                <input type="radio" name="would_recommend" id="yes-recommendation" value="yes" required>
+                yes
+            </label>
+            <label class="d-block" for="no-recommendation">
+                <input type="radio" name="would_recommend" id="no-recommendation" value="no">
+                no
+            </label>
+            <label class="d-block" for="maybe-recommendation">
+                <input type="radio" name="would_recommend" id="maybe-recommendation" value="maybe">
+                maybe
+            </label>
+           </div>
+        </div>
+        <div class="mb-3">
+            <label for="additional_feedback" class="form-label mb-0">
+                Any additional feedback
+            </label>
+            <div id="feedbackHelp" class="form-text mt-0 mb-2">any feature or optimization recommendtaion</div>
+            <textarea class="form-control" name="additional_feedback" placeholder="Leave a comment here" id="additional_feedback"></textarea>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+            <label class="form-check-label" for="exampleCheck1">I consent to the storage and handling of my data by this website.</label>
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+</div>
+<style>
+    input[type="radio"] ~ label {
+        cursor: pointer;
+    }
+    input[type="radio"]:hover ~ .service-rating {
+        color: var(--bs-body-color);
+        background-color: var(--bs-body-bg);
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem var(--bs-gray-600);
+    }
+    
+    input[type="radio"]:checked ~ .service-rating {
+        color: var(--bs-light);
+        background-color: var(--bs-dark) !important;
+        outline: 0;
+        border-color: #86b7fe;
+    }
+</style>
+{% endblock body %}

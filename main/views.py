@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Data
+from django.contrib import messages
+from .models import Data, Feedback
 
 # Create your views here.
 def home(request):
@@ -19,3 +20,20 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def feedback(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        service_rating = request.POST.get('service_rating')
+        would_recommend = request.POST.get('would_recommend')
+        additional_feedback = request.POST.get('additional_feedback')
+        Feedback.objects.create(
+            name=name,
+            email=email,
+            service_rating=service_rating,
+            would_recommend=would_recommend,
+            additional_feedback=additional_feedback
+        )
+        messages.success(request, 'successfully sent a feedback. Thanks 👏')
+    return render(request, 'feedback.html')

@@ -19,7 +19,7 @@
                     <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url "about" %}">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active btn btn-dark text-white px-3 " aria-current="page" href="#">
+                    <a class="nav-link active btn btn-dark text-white px-3 " aria-current="page" href="{% url "feedback" %}">
                         <img class="rounded-circle" width="30px" src="{% static "avatar.png" %}" alt="">
                         feedback
                     </a>

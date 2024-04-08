@@ -27,6 +27,16 @@
     {% block head %}{% endblock head %}
 </head>
 <body>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert fixed-top {% if message.tags %} alert-{{ message.tags }} {% endif %}  alert-dismissible fade show mt-2 mx-4" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     {% include "components/navbar.html" %}
     {% block body %}{% endblock body %}
 </body>
