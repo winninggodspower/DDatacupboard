@@ -22,7 +22,7 @@ class Feedback(models.Model):
         ('maybe', 'maybe'),
     ]
     name    = models.CharField(max_length=50)
-    email   = models.EmailField(max_length=254)
+    email   = models.EmailField(max_length=254, blank=True, null=True)
     service_rating = models.PositiveIntegerField()
     would_recommend = models.CharField(max_length=50, choices=WOULD_RECOMMEND_CHOICES)
     additional_feedback = models.TextField()
