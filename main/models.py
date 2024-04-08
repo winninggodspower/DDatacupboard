@@ -48,6 +48,6 @@ def send_feedback_email(sender, instance, created, **kwargs):
             subject=subject,
             message=message,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=['winninggodspower@gmail.com'],
+            recipient_list=['destrorobotics@gmail.com'],
         ))
         thread.start()
